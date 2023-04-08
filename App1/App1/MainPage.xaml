@@ -1,57 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App1.ViewModels"
              x:Class="App1.MainPage">
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
 
-    <!--<StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>-->
-
-    <Grid>
+    <Grid BackgroundColor="SteelBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"  />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*"  />
             <ColumnDefinition Width="50" />
         </Grid.ColumnDefinitions>
 
-        <Rectangle Grid.Column="0" Fill="SteelBlue" />
-        <!--<StackLayout StrokeThickness="10" Grid.Row="1" Fill="Beige" Grid.ColumnSpan="5" />-->
-        <Label x:Name="MainSheet"
-            Grid.Row="1"
-            Grid.ColumnSpan="5"
-            BackgroundColor="AliceBlue" 
-            HorizontalTextAlignment="Start"
-            VerticalTextAlignment="Start"
-            Text="Here is nothing to show now!" 
-            />
+        <ImageButton 
+            x:Name="ButtonAddSheet" 
+            Grid.Row="0" 
+            Grid.Column="1" 
+            Source="icon_plus.png" 
+            Command="{Binding AddSheet}" />
 
+        <!--<Frame Grid.Row="1" Grid.ColumnSpan="5" CornerRadius="1" Margin="10,10,10,10" BackgroundColor="AliceBlue">
+            <Editor x:Name="MainSheet"
+                TextColor="{Binding SheetTextColor}"
+                Text="{Binding SheetText}" 
+                />
+        </Frame>-->
 
-
-        <ImageButton x:Name="ButtonAddAppoint" Grid.Row="0" Grid.Column="1" Source="https://icons8.com/icon/OSuZVRREdbg2/broom" Clicked="ButtonAddAppointClick" />
-        <ImageButton x:Name="ButtonAddTodo" BackgroundColor="SteelBlue" Source="https://icons8.com/icon/25534/checked-checkbox" Grid.Row="0" Grid.Column="2" Clicked="ButtonAddTodoClick" />
-        <Button x:Name="ButtonClearNote" Grid.Row="0" Grid.Column="3" Text="Clear" Clicked="ButtonClearNoteClick" />
-        <Button x:Name="ButtonInfo" Grid.Row="0" Grid.Column="4" Text="Info" Clicked="ButtonInfoClick" />
-
+        <CollectionView Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Margin="20, 0, 20, 0"
+                        
+                        ItemsSource="{Binding AllSheets}"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding SelectedSheet}"
+                        SelectionChangedCommand="{Binding SelectedSheetChangedCommand}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                  Span="4"
+                                 VerticalItemSpacing="10"
+                                 HorizontalItemSpacing="10"
+                                 />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame WidthRequest="30" HeightRequest="30">
+                        <Label Text="{Binding SheetText}" />
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
+
+    
 
 </ContentPage>
