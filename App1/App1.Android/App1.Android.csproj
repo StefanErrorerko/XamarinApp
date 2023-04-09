@@ -60,8 +60,32 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Prism.DryIoc.Forms">
+      <Version>8.1.97</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Forms">
+      <Version>8.1.97</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Forms.Regions">
+      <Version>8.1.97</Version>
+    </PackageReference>
+    <PackageReference Include="ReactiveUI">
+      <Version>18.4.26</Version>
+    </PackageReference>
+    <PackageReference Include="ReactiveUI.XamForms">
+      <Version>18.4.26</Version>
+    </PackageReference>
+    <PackageReference Include="SkiaSharp">
+      <Version>2.88.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.CommunityToolkit">
+      <Version>2.0.5</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
+    <PackageReference Include="Xamarin.Forms.PancakeView">
+      <Version>2.3.0.759</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />

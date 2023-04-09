@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:App1.ViewModels"
+             x:Class="App1.AppointmentCreatePage">
+    <ContentPage.BindingContext>
+        <local:AppointmentCreateViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Enter information abput upcoming appointment"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Enter title:" />
+            <Frame>
+                <Entry Placeholder="Title" Text="{Binding Title}" />
+            </Frame>
+            <Label Text="Enter description:" />
+            <Frame>
+                <Entry Placeholder="Description" Text="{Binding Description}"/>
+            </Frame>
+            <Label Text="Begins at:"/>
+            <TimePicker Time="{Binding Begin}"/>
+            <Label Text="Ends at:"/>
+            <TimePicker Time="{Binding End}"/>
+            <Button Text="Submit" Style="{StaticResource Text_Button}" Command="{Binding Submit}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

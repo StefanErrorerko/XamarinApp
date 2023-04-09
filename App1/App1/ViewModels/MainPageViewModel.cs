@@ -26,7 +26,7 @@ namespace App1.ViewModels
 
             AddSheet = new Command(async () =>
             {
-                var sheetVM = new SheetPageViewModel(String.Empty);
+                var sheetVM = new SheetPageViewModel();
                 var sheetPage = new SheetPage();
                 AllSheets.Add(sheetVM);
                 sheetPage.BindingContext = sheetVM;

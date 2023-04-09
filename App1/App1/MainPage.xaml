@@ -6,8 +6,16 @@
     <ContentPage.BindingContext>
         <local:MainPageViewModel />
     </ContentPage.BindingContext>
-
-    <Grid BackgroundColor="SteelBlue">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <Grid BackgroundColor="{StaticResource PrimaryColor}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"  />
             <RowDefinition Height="*" />
@@ -22,7 +30,8 @@
             Grid.Row="0" 
             Grid.Column="1" 
             Source="icon_plus.png" 
-            Command="{Binding AddSheet}" />
+            Command="{Binding AddSheet}" 
+            Style="{StaticResource Icon_Button}"/>
 
         <!--<Frame Grid.Row="1" Grid.ColumnSpan="5" CornerRadius="1" Margin="10,10,10,10" BackgroundColor="AliceBlue">
             <Editor x:Name="MainSheet"
@@ -34,7 +43,6 @@
         <CollectionView Grid.Row="1"
                         Grid.ColumnSpan="2"
                         Margin="20, 0, 20, 0"
-                        
                         ItemsSource="{Binding AllSheets}"
                         SelectionMode="Single"
                         SelectedItem="{Binding SelectedSheet}"
@@ -49,8 +57,17 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame WidthRequest="30" HeightRequest="30">
-                        <Label Text="{Binding SheetText}" />
+                        <Label Text="{Binding .}" />
                     </Frame>
+
+                    <!--<StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <DropGestureRecognizer 
+                                AllowDrop="True"
+                                DragLeaveCommand=""
+                                />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>-->
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
