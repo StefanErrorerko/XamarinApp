@@ -6,6 +6,7 @@ namespace App1.Models
 {
     public static class AppointmentExtensions
     {
+
         public static Appointment Copy(this Appointment thisAppointment)
         {
             var appointment = new Appointment();

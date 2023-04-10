@@ -86,7 +86,7 @@
                                             <StackLayout >
                                                 <Label Text="{Binding Title}" Margin="20, 10, 0, 0" FontAttributes="Bold"/>
                                                 <Label Text="{Binding Description}" Margin="40, 0, 0, 0"/>
-                                                <Label Margin="0, 0, 20, 10" HorizontalOptions="End">
+                                                <Label HorizontalOptions="End" Margin="0, 0, 20, 10">
                                                     <Label.Text>
                                                         <MultiBinding StringFormat="{}{0} - {1}">
                                                             <Binding Path="BeginningString" />
@@ -94,9 +94,6 @@
                                                         </MultiBinding>
                                                     </Label.Text>
                                                 </Label>
-                                                
-                                                <!--<Label Text="{Binding Beginning}"/>
-                                                <Label Text="{Binding Ending}" Margin="25, 5, 0, 0"/>-->
                                             </StackLayout>
                                         </pancakeview:PancakeView>
                                     </StackLayout>

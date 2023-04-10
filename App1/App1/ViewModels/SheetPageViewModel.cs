@@ -12,21 +12,9 @@ namespace App1.ViewModels
 {
     public class SheetPageViewModel : INotifyPropertyChanged
     {
+        #region Events
         public event PropertyChangedEventHandler PropertyChanged;
-
-        DayTask selectedTask;
-        public DayTask SelectedTask
-        {
-            get => selectedTask;
-            set
-            {
-                selectedTask = value;
-                var args = new PropertyChangedEventArgs(nameof(SelectedTask));
-                PropertyChanged?.Invoke(this, args);
-            }
-        }
-        
-        public ObservableCollection<DayTask> SheetTasks { get; set; }
+#endregion
 
         #region Constructor
         public SheetPageViewModel()
@@ -41,12 +29,33 @@ namespace App1.ViewModels
         }
         #endregion
 
+        #region Properties
+        DayTask selectedTask;
+        #endregion
 
+        #region Fields
+        public DayTask SelectedTask
+        {
+            get => selectedTask;
+            set
+            {
+                selectedTask = value;
+                var args = new PropertyChangedEventArgs(nameof(SelectedTask));
+                PropertyChanged?.Invoke(this, args);
+            }
+        }
+        
+        public ObservableCollection<DayTask> SheetTasks { get; set; }
+        #endregion
+
+        #region Commands
         public Command AddAppointment { get; }
         public Command AddTodo { get; }
         public Command ClearSheet { get; }
         public Command ProvideInfo { get; }
+        #endregion
 
+        #region CommandHandlers
         public async void AddAppointmentCommandHandler()
         {
             var vm = new AppointmentCreateViewModel(new Appointment(), SheetTasks);
@@ -67,5 +76,6 @@ namespace App1.ViewModels
         {
 
         }
+        #endregion
     }
 }

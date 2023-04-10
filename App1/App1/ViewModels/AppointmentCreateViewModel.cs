@@ -10,35 +10,42 @@ using Xamarin.Forms;
 
 namespace App1.ViewModels
 {
-	public class AppointmentCreateViewModel : INotifyPropertyChanged
-	{
-		public Appointment AppointmentProcessed { get; set; }
+        #region Constructors
+    public class AppointmentCreateViewModel : INotifyPropertyChanged
+    {
+        public Appointment AppointmentProcessed { get; set; }
         public ObservableCollection<DayTask> SheetTasks { get; set; }
         public AppointmentCreateViewModel() { }
-		public AppointmentCreateViewModel (Appointment appointment, ObservableCollection<DayTask> sheetTasks)
-		{
+        public AppointmentCreateViewModel(Appointment appointment, ObservableCollection<DayTask> sheetTasks)
+        {
             AppointmentProcessed = appointment;
             SheetTasks = sheetTasks;
-			Submit = new Command(() => SubmitCommandHandler());
-		}
+            Submit = new Command(() => SubmitCommandHandler());
+        }
+        #endregion
 
+        #region Events
         public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
+
+        #region Properties
         public String title;
         public String description;
         public TimeSpan begin;
         public TimeSpan end;
+        #endregion
 
-
-		public String Title
-		{
-			get => title;
-			set
-			{
+        #region Fields
+        public String Title
+        {
+            get => title;
+            set
+            {
                 title = value;
                 var args = new PropertyChangedEventArgs(nameof(Title));
                 PropertyChanged?.Invoke(this, args);
             }
-		}
+        }
 
         public String Description
         {
@@ -70,11 +77,15 @@ namespace App1.ViewModels
                 PropertyChanged?.Invoke(this, args);
             }
         }
+        #endregion
 
+        #region Commands
         public Command Submit { get; }
+        #endregion
 
-		public async void SubmitCommandHandler()
-		{
+        #region CommandHandlers
+        public async void SubmitCommandHandler()
+        {
             AppointmentProcessed.Title = title;
             AppointmentProcessed.Content = description;
             AppointmentProcessed.Beginning = begin;
@@ -82,6 +93,7 @@ namespace App1.ViewModels
             var appointment = AppointmentProcessed.Copy();
             SheetTasks.Add(appointment);
             await Application.Current.MainPage.Navigation.PopModalAsync();
-		}
+        }
+        #endregion
     }
 }

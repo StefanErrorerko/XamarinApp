@@ -9,7 +9,6 @@
 
     <ResourceDictionary.MergedDictionaries>
         <styles:Colors></styles:Colors>
-        <styles:Fonts></styles:Fonts>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="Icon_Button" TargetType="ImageButton">

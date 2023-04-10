@@ -17,9 +17,9 @@
     
     
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="20">
             <Label Text="Enter information abput upcoming appointment"
-                VerticalOptions="CenterAndExpand"/>
+                HorizontalOptions="Center"/>
             <Label Text="Enter title:" />
             <Frame>
                 <Entry Placeholder="Title" Text="{Binding Title}" />
