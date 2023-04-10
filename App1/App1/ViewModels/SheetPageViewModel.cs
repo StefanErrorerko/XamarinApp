@@ -13,38 +13,26 @@ namespace App1.ViewModels
     public class SheetPageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
+        DayTask selectedTask;
+        public DayTask SelectedTask
+        {
+            get => selectedTask;
+            set
+            {
+                selectedTask = value;
+                var args = new PropertyChangedEventArgs(nameof(SelectedTask));
+                PropertyChanged?.Invoke(this, args);
+            }
+        }
         
-        Todo selectedTodo;
-        Appointment selectedAppointment;
-        public Todo SelectedTodo
-        {
-            get => selectedTodo;
-            set
-            {
-                selectedTodo = value;
-                var args = new PropertyChangedEventArgs(nameof(SelectedTodo));
-                PropertyChanged?.Invoke(this, args);
-            }
-        }
-        public Appointment SelectedAppointment
-        {
-            get => selectedAppointment;
-            set
-            {
-                selectedAppointment = value;
-                var args = new PropertyChangedEventArgs(nameof(SelectedAppointment));
-                PropertyChanged?.Invoke(this, args);
-            }
-        }
-        public ObservableCollection<Todo> SheetTodos { get; set; }
-        public ObservableCollection<Appointment> SheetAppointments { get; set; }
+        public ObservableCollection<DayTask> SheetTasks { get; set; }
 
         #region Constructor
         public SheetPageViewModel()
         {
             //SheetText = sheet;
-            SheetTodos = new ObservableCollection<Todo>();
-            SheetAppointments = new ObservableCollection<Appointment>();
+            SheetTasks = new ObservableCollection<DayTask>();
 
             AddAppointment = new Command(() => AddAppointmentCommandHandler());
             AddTodo = new Command(() => AddTodoCommandHandler());
@@ -52,19 +40,6 @@ namespace App1.ViewModels
             ProvideInfo = new Command(() => ProvideInfoCommandHandler());
         }
         #endregion
-
-        
-
-        //public Color SheetTextColor
-        //{
-        //    get => sheetTextColor;
-        //    set
-        //    {
-        //        sheetTextColor = value;
-        //        var args = new PropertyChangedEventArgs(nameof(SheetTextColor));
-        //        PropertyChanged?.Invoke(this, args);
-        //    }
-        //}
 
 
         public Command AddAppointment { get; }
@@ -74,7 +49,7 @@ namespace App1.ViewModels
 
         public async void AddAppointmentCommandHandler()
         {
-            var vm = new AppointmentCreateViewModel(new Appointment(), SheetAppointments);
+            var vm = new AppointmentCreateViewModel(new Appointment(), SheetTasks);
             var page = new AppointmentCreatePage();
             page.BindingContext = vm;
             await Application.Current.MainPage.Navigation.PushModalAsync(page);            
@@ -82,11 +57,11 @@ namespace App1.ViewModels
 
         public void AddTodoCommandHandler()
         {
-            SheetTodos.Add(new Todo(new CheckBox(), String.Empty));
+            SheetTasks.Add(new Todo(new CheckBox(), String.Empty));
         }
         public void ClearSheetCommandHandler()
         {
-            SheetTodos.Clear();
+            SheetTasks.Clear();
         }
         public void ProvideInfoCommandHandler()
         {

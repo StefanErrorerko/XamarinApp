@@ -4,25 +4,29 @@ using System.Text;
 
 namespace App1.Models
 {
-    public class Appointment
+    public class Appointment : DayTask
     {
         public string Title { get; set; }
-        public string Description { get; set; }
         public TimeSpan Beginning { get;set; }
         public TimeSpan Ending { get;set; }
+        public String BeginningString { get => Beginning.ToString(@"hh\:mm");}
+        public String EndingString { get => Beginning.ToString(@"hh\:mm"); }
+
 
         public Appointment(String title, String descr, TimeSpan begin, TimeSpan end)
         {
             Title = title;
-            Description = descr;
+            Content = descr;
             Beginning = begin;
             Ending = end;
+            isTodo = false;
+            isAppointment = true;
         }
 
         public Appointment()
         {
             Title = String.Empty;
-            Description = String.Empty;
+            Content = String.Empty;
             Beginning = TimeSpan.Zero;
             Ending = TimeSpan.Zero;
         }

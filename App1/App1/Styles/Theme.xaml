@@ -2,7 +2,11 @@
 <ResourceDictionary  xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:styles="clr-namespace:App1.Styles"
-             x:Class="App1.Styles.Theme">
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="App1.Styles.Theme"
+             xmlns:custom="clr-namespace:App1.CustomRenderer">
+            
+
     <ResourceDictionary.MergedDictionaries>
         <styles:Colors></styles:Colors>
         <styles:Fonts></styles:Fonts>
@@ -14,16 +18,39 @@
         <Setter Property="CornerRadius" Value="10" />
     </Style>
 
-    <Style x:Key="Todo_Frame" TargetType="Frame">
+    <Style x:Key="Todo_Pancakeview" TargetType="pancakeview:PancakeView">
         <Setter Property="BackgroundColor" Value="{StaticResource SheetColor}"/>
+        <Setter Property="CornerRadius" Value="0, 0, 0, 10" />
     </Style>
-    <Style x:Key="Appointment_Frame" TargetType="Frame">
+    
+    <Style x:Key="Appointment_Pancakeview" TargetType="pancakeview:PancakeView">
         <Setter Property="BackgroundColor" Value="{StaticResource SheetColor}"/>
+        <Setter Property="Border" Value="{pancakeview:BorderMarkup Color={StaticResource DarkerColor}, Thickness='1'}" />
+        <Setter Property="CornerRadius" Value="15, 15, 15, 15" />
     </Style>
+    
+    <Style x:Key="Sheet_Pancakeview" TargetType="pancakeview:PancakeView">
+        <Setter Property="BackgroundColor" Value="{StaticResource SheetColor}"/>
+        <Setter Property="CornerRadius" Value="0, 0, 0, 32" />
+    </Style>
+
+    <Style x:Key="SmallSheet_Pancakeview" TargetType="pancakeview:PancakeView">
+        <Setter Property="BackgroundColor" Value="{StaticResource SheetColor}"/>
+        <Setter Property="CornerRadius" Value="0, 0, 0, 2" />
+    </Style>
+
+    <Style x:Key="Todo_Checkbox" TargetType="CheckBox">
+        <Setter Property="Color" Value="{StaticResource DarkerColor}" />
+    </Style>
+        
+    <Style x:Key="Todo_Entry" TargetType="custom:BorderlessEntry">
+    </Style>
+    
 
     <Style x:Key="Text_Button" TargetType="Button">
         <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
         <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="TextColor" Value="{StaticResource SheetColor}" />
     </Style>
 
 </ResourceDictionary>

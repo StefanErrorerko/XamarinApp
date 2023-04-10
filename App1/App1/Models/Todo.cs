@@ -5,15 +5,16 @@ using Xamarin.Forms;
 
 namespace App1.Models
 {
-    public class Todo
+    public class Todo :DayTask
     {
         public CheckBox Check { get; set; }
-        public String Content { get; set; }
         
         public Todo(CheckBox check, String content)
         {
             Check = check;
             Content = content;
+            isTodo = true;
+            isAppointment = false;
         }
     }
 }

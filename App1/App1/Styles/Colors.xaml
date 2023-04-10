@@ -2,11 +2,20 @@
 <ResourceDictionary  xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App1.Styles.Colors">
-    <Color x:Key="PrimaryColor">#2f02a3</Color>
-    <Color x:Key="SheetColor">#EFFF</Color>
+    <Color x:Key="PrimaryColor">#003566</Color>
+    <Color x:Key="SheetColor">#ffffff</Color>
+    <Color x:Key="DarkerColor">#001d3d</Color>
+    <Color x:Key="DarkestColor">#000814</Color>
+
 
     <Color x:Key="FailColor">#D04C41</Color>
     <Color x:Key="SuccessColor">#00AF49</Color>
+
+    <Color x:Key="DarkText">#000814</Color>
+    <Color x:Key="LightText">#ffffff</Color>
+    
+    
+
 
     <!--App Theme Light-->
     <Color x:Key="LightPrimaryTextColor">#212121</Color>

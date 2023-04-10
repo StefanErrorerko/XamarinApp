@@ -10,7 +10,7 @@ namespace App1.Models
         {
             var appointment = new Appointment();
             appointment.Title = thisAppointment.Title;
-            appointment.Description = thisAppointment.Description;
+            appointment.Content = thisAppointment.Content;
             appointment.Beginning = thisAppointment.Beginning;
             appointment.Ending = thisAppointment.Ending;
             return appointment;

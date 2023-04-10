@@ -13,12 +13,12 @@ namespace App1.ViewModels
 	public class AppointmentCreateViewModel : INotifyPropertyChanged
 	{
 		public Appointment AppointmentProcessed { get; set; }
-        public ObservableCollection<Appointment> SheetAppointments { get; set; }
+        public ObservableCollection<DayTask> SheetTasks { get; set; }
         public AppointmentCreateViewModel() { }
-		public AppointmentCreateViewModel (Appointment appointment, ObservableCollection<Appointment> sheetAppointments)
+		public AppointmentCreateViewModel (Appointment appointment, ObservableCollection<DayTask> sheetTasks)
 		{
             AppointmentProcessed = appointment;
-            SheetAppointments = sheetAppointments;
+            SheetTasks = sheetTasks;
 			Submit = new Command(() => SubmitCommandHandler());
 		}
 
@@ -76,11 +76,11 @@ namespace App1.ViewModels
 		public async void SubmitCommandHandler()
 		{
             AppointmentProcessed.Title = title;
-            AppointmentProcessed.Description = description;
+            AppointmentProcessed.Content = description;
             AppointmentProcessed.Beginning = begin;
             AppointmentProcessed.Ending = end;
             var appointment = AppointmentProcessed.Copy();
-            SheetAppointments.Add(appointment);
+            SheetTasks.Add(appointment);
             await Application.Current.MainPage.Navigation.PopModalAsync();
 		}
     }
