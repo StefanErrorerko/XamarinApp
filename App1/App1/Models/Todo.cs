@@ -8,6 +8,7 @@ namespace App1.Models
     public class Todo :DayTask
     {
         public CheckBox Check { get; set; }
+        public bool IsChecked { get; set; }
         
         public Todo(CheckBox check, String content)
         {
@@ -15,6 +16,7 @@ namespace App1.Models
             Content = content;
             isTodo = true;
             isAppointment = false;
+            IsChecked = false;
         }
     }
 }

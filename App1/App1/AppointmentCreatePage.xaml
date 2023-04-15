@@ -22,7 +22,7 @@
                 HorizontalOptions="Center"/>
             <Label Text="Enter title:" />
             <Frame>
-                <Entry Placeholder="Title" Text="{Binding Title}" />
+                <Entry Placeholder="Title" Text="{Binding Title}"  />
             </Frame>
             <Label Text="Enter description:" />
             <Frame>
@@ -33,6 +33,7 @@
             <Label Text="Ends at:"/>
             <TimePicker Time="{Binding End}"/>
             <Button Text="Submit" Style="{StaticResource Text_Button}" Command="{Binding Submit}"/>
+            <Label Text="{Binding LabelError}" TextColor="Red" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

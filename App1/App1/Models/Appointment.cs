@@ -11,7 +11,7 @@ namespace App1.Models
         public TimeSpan Beginning { get;set; }
         public TimeSpan Ending { get;set; }
         public String BeginningString { get => Beginning.ToString(@"hh\:mm");}
-        public String EndingString { get => Beginning.ToString(@"hh\:mm"); }
+        public String EndingString { get => Ending.ToString(@"hh\:mm"); }
 
         #endregion
 

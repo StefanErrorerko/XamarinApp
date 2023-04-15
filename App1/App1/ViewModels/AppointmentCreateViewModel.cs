@@ -10,15 +10,16 @@ using Xamarin.Forms;
 
 namespace App1.ViewModels
 {
-        #region Constructors
+        
     public class AppointmentCreateViewModel : INotifyPropertyChanged
     {
-        public Appointment AppointmentProcessed { get; set; }
-        public ObservableCollection<DayTask> SheetTasks { get; set; }
+
+        #region Constructors
         public AppointmentCreateViewModel() { }
         public AppointmentCreateViewModel(Appointment appointment, ObservableCollection<DayTask> sheetTasks)
         {
             AppointmentProcessed = appointment;
+            LabelError = String.Empty;
             SheetTasks = sheetTasks;
             Submit = new Command(() => SubmitCommandHandler());
         }
@@ -33,9 +34,12 @@ namespace App1.ViewModels
         public String description;
         public TimeSpan begin;
         public TimeSpan end;
+        public String labelError;
         #endregion
 
         #region Fields
+        public Appointment AppointmentProcessed { get; set; }
+        public ObservableCollection<DayTask> SheetTasks { get; set; }
         public String Title
         {
             get => title;
@@ -77,6 +81,17 @@ namespace App1.ViewModels
                 PropertyChanged?.Invoke(this, args);
             }
         }
+
+        public String LabelError
+        {
+            get => labelError;
+            set
+            {
+                labelError = value;
+                var args = new PropertyChangedEventArgs(nameof(LabelError));
+                PropertyChanged?.Invoke(this, args);
+            }
+        }
         #endregion
 
         #region Commands
@@ -86,6 +101,17 @@ namespace App1.ViewModels
         #region CommandHandlers
         public async void SubmitCommandHandler()
         {
+            LabelError = String.Empty;
+            // if end of appoint. is bigger than begin in more than 5 mins.
+            if(String.IsNullOrEmpty(title) || String.IsNullOrEmpty(description))
+            {
+                LabelError = "You left one or more fields empty;";
+                return;
+            }
+            else if(end - begin < new TimeSpan(0, 5, 0)){
+                LabelError = "You input invalid time interval for an appointment";
+                return;
+            }
             AppointmentProcessed.Title = title;
             AppointmentProcessed.Content = description;
             AppointmentProcessed.Beginning = begin;

@@ -34,13 +34,6 @@
             Command="{Binding AddSheet}" 
             Style="{StaticResource Icon_Button}"/>
 
-        <!--<Frame Grid.Row="1" Grid.ColumnSpan="5" CornerRadius="1" Margin="10,10,10,10" BackgroundColor="AliceBlue">
-            <Editor x:Name="MainSheet"
-                TextColor="{Binding SheetTextColor}"
-                Text="{Binding SheetText}" 
-                />
-        </Frame>-->
-
         <CollectionView Grid.Row="1"
                         Grid.ColumnSpan="2"
                         Margin="20, 0, 20, 0"
@@ -50,25 +43,31 @@
                         SelectionChangedCommand="{Binding SelectedSheetChangedCommand}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"
-                                  Span="4"
+                                 Span="4"
                                  VerticalItemSpacing="10"
                                  HorizontalItemSpacing="10"
                                  />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <pancakeview:PancakeView Style="{StaticResource SmallSheet_Pancakeview}" WidthRequest="30" HeightRequest="30">
-                        <Label Text="{Binding SelectedTodo.Content}" />
-                    </pancakeview:PancakeView>
+                    <pancakeview:PancakeView Style="{StaticResource SmallSheet_Pancakeview}" WidthRequest="60" HeightRequest="60">
+                        <!--<pancakeview:PancakeView.Shadow>
+                            <pancakeview:DropShadow Color="{StaticResource SheetColor}"/>
+                        </pancakeview:PancakeView.Shadow>-->
+                        <Label Text="{Binding Stringed}" />
+                        
+                        <!--<CollectionView Grid.Row="5"
+                                        ItemsSource="{Binding SheetTasks}"
+                                        SelectionMode="None"
+                                        SelectedItem="{Binding SelectedTask}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding Content}" />
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>-->
 
-                    <!--<StackLayout>
-                        <StackLayout.GestureRecognizers>
-                            <DropGestureRecognizer 
-                                AllowDrop="True"
-                                DragLeaveCommand=""
-                                />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>-->
+                    </pancakeview:PancakeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
