@@ -41,6 +41,11 @@
         <Setter Property="FontSize" Value="Small"/>
         <Setter Property="TextColor" Value="{StaticResource LightText}" />
     </Style>
+    <Style x:Key="SmallSheet_Title" TargetType="Label">
+        <Setter Property="FontSize" Value="Medium"/>
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{StaticResource LightText}" />
+    </Style>
     <Style x:Key="MainPage_StaticText" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource LightText}" />
         <Setter Property="FontAttributes" Value="Bold" />
@@ -57,8 +62,18 @@
     </Style>
         
     <Style x:Key="Todo_Entry" TargetType="custom:BorderlessEntry">
+        <Setter Property="FontSize" Value="Medium" />
     </Style>
-    
+    <Style x:Key="PlainText_Editor" TargetType="custom:BorderlessEditor">
+        <Setter Property="FontSize" Value="Medium" />
+        <Setter Property="AutoSize" Value="TextChanges" />
+    </Style>
+    <Style x:Key="PlainText_Title_Editor" TargetType="custom:BorderlessEditor">
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="Large" />
+        <Setter Property="AutoSize" Value="TextChanges" />
+        <Setter Property="Placeholder" Value="Paste your text here..." />
+    </Style>
 
     <Style x:Key="Text_Button" TargetType="Button">
         <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />

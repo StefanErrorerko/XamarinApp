@@ -14,8 +14,7 @@ namespace App1.Models
         {
             Check = check;
             Content = content;
-            isTodo = true;
-            isAppointment = false;
+            IsTodo = true;
             IsChecked = false;
         }
     }

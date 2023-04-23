@@ -27,6 +27,13 @@
             <ColumnDefinition Width="50" />
         </Grid.ColumnDefinitions>
 
+        <Label
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Text="All Sheets"
+            Style="{StaticResource MainPage_StaticText}"/>
+        <BoxView Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource Line_Separator}"/>
+        
         <ImageButton 
             x:Name="ButtonAddSheet" 
             Grid.Row="0" 
@@ -34,13 +41,6 @@
             Source="icon_plus.png" 
             Command="{Binding AddSheet}" 
             Style="{StaticResource Icon_Button}"/>
-
-        <Label
-            Grid.Row="0"
-            Grid.ColumnSpan="2"
-            Text="All Sheets"
-            Style="{StaticResource MainPage_StaticText}"/>
-        <BoxView Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource Line_Separator}"/>
 
 
         <CollectionView Grid.Row="2"
@@ -54,6 +54,7 @@
                 <DataTemplate>
                     <pancakeview:PancakeView Style="{StaticResource SmallSheet_Pancakeview}" WidthRequest="60" HeightRequest="60">
                         <StackLayout>
+                            <Label Text="{Binding Title}" Style="{StaticResource SmallSheet_Title}"/>
                             <Label Text="{Binding Stringed}" Style="{StaticResource SmallSheet_Label}" />
                             <BoxView Style="{StaticResource Line_Separator}"/>
                         </StackLayout>

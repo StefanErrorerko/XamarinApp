@@ -22,8 +22,7 @@ namespace App1.Models
             Content = descr;
             Beginning = begin;
             Ending = end;
-            isTodo = false;
-            isAppointment = true;
+            IsAppointment = true;
         }
 
         public Appointment()
@@ -32,8 +31,7 @@ namespace App1.Models
             Content = String.Empty;
             Beginning = TimeSpan.Zero;
             Ending = TimeSpan.Zero;
-            isTodo = false;
-            isAppointment = true;
+            IsAppointment = true;
         }
         #endregion
     }

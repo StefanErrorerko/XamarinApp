@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using App1.Models;
+using App1.Models.ModelExtensions;
 
 using Xamarin.Forms;
 
@@ -117,7 +118,12 @@ namespace App1.ViewModels
             AppointmentProcessed.Beginning = begin;
             AppointmentProcessed.Ending = end;
             var appointment = AppointmentProcessed.Copy();
+            if (String.IsNullOrEmpty(SheetTasks.Last().Content) && SheetTasks.Last().IsPlainText)
+            {
+                SheetTasks.RemoveAt(SheetTasks.Count - 1);
+            }
             SheetTasks.Add(appointment);
+            SheetTasks.Add(new PlainText(placeholderText: String.Empty));
             await Application.Current.MainPage.Navigation.PopModalAsync();
         }
         #endregion

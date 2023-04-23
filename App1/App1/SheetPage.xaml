@@ -30,6 +30,9 @@
             <ColumnDefinition Width="50" />
         </Grid.ColumnDefinitions>
 
+        <Button x:Name="ButtonAddEditor"
+                IsVisible="false"
+                Command="{Binding AddEditor}"/>
         <ImageButton 
             x:Name="ButtonAddAppoint" 
             Grid.Row="0" 
@@ -38,7 +41,7 @@
             Command="{Binding AddAppointment}" 
             Style="{StaticResource Icon_Button}"/>
         <ImageButton 
-            x:Name="ButtonAddTodo" 
+            x:Name ="ButtonAddTodo" 
             Grid.Row="0" 
             Grid.Column="2"
             Source="icon_checkbox.png" 
@@ -59,30 +62,31 @@
             Command="{Binding ProvideInfo}" 
             Style="{StaticResource Icon_Button}"/>
 
+        
         <pancakeview:PancakeView Grid.Row="1" Grid.ColumnSpan="5" Margin="10,10,10,10" Style="{StaticResource Sheet_Pancakeview}">
-            <!--<Editor x:Name="MainSheet"
-                TextColor="{Binding SheetTextColor}"
-                Text="{Binding SheetText}" 
-                Style="{StaticResource Editor}"/>-->
-            <StackLayout>
-                <!--<custom:BorderlessEntry Text="{Binding }" />-->
+            <StackLayout >
+                <custom:BorderlessEditor x:Name="TitleEditor"
+                                         Margin="10, 10, 10, 0"
+                                 Style="{StaticResource PlainText_Title_Editor}"
+                                 Text="{Binding Title}"
+                                 TextChanged ="TitleEditor_Completed"/>
                 <CollectionView Grid.Row="1"
                         Grid.ColumnSpan="5"
-                        Margin="10"
+                        Margin="10, 0, 10, 10"
                         ItemsSource="{Binding SheetTasks}"
                         SelectionMode="Multiple"
                         SelectedItem="{Binding SelectedTask}">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate >
                             <pancakeview:PancakeView x:Name="TodoPancakeView" Style="{StaticResource Todo_Pancakeview}">
                                 <StackLayout>
-                                    <StackLayout IsVisible="{Binding isTodo}" Orientation="Horizontal">
+                                    <StackLayout IsVisible="{Binding IsTodo}" Orientation="Horizontal">
                                         <CheckBox IsChecked="{Binding IsChecked}" Style="{StaticResource Todo_Checkbox}"/>
                                         <custom:BorderlessEntry Text="{Binding Content}" 
                                                                 Style="{StaticResource Todo_Entry}" 
                                                                 WidthRequest="{Binding Source={x:Reference Name=TodoPancakeView}, Path=Width}"/>
                                     </StackLayout>
-                                    <StackLayout IsVisible="{Binding isAppointment}">
+                                    <StackLayout IsVisible="{Binding IsAppointment}">
                                         <pancakeview:PancakeView Style="{StaticResource Appointment_Pancakeview}">
                                             <StackLayout >
                                                 <Label Text="{Binding Title}" Margin="20, 10, 0, 0" FontAttributes="Bold"/>
@@ -98,6 +102,10 @@
                                             </StackLayout>
                                         </pancakeview:PancakeView>
                                     </StackLayout>
+                                    <custom:BorderlessEditor Style="{StaticResource PlainText_Editor}" 
+                                                            IsVisible="{Binding IsPlainText}" 
+                                                            Text="{Binding Content}"
+                                                            Placeholder="{Binding PlaceholderText}"/>
                                 </StackLayout>
                             </pancakeview:PancakeView>
                         </DataTemplate>

@@ -1,4 +1,5 @@
-﻿using App1.ViewModels;
+﻿using App1.CustomRenderer;
+using App1.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,5 +20,18 @@ namespace App1
             InitializeComponent();
         }
 
+        private void TitleEditor_Completed(object sender, TextChangedEventArgs e)
+        {
+            if(e.NewTextValue?.Length > e.OldTextValue?.Length)
+            {
+                var key = e.NewTextValue?.Last() ?? ' ';
+                if(key == '\n')
+                {
+                    TitleEditor.Text = e.OldTextValue;
+                    TitleEditor.Unfocus();
+                }
+            }
+            
+        }
     }
 }
