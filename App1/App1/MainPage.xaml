@@ -19,6 +19,7 @@
     <Grid BackgroundColor="{StaticResource PrimaryColor}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"  />
+            <RowDefinition Height="1" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -34,27 +35,31 @@
             Command="{Binding AddSheet}" 
             Style="{StaticResource Icon_Button}"/>
 
-        <CollectionView Grid.Row="1"
+        <Label
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Text="All Sheets"
+            Style="{StaticResource MainPage_StaticText}"/>
+        <BoxView Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource Line_Separator}"/>
+
+
+        <CollectionView Grid.Row="2"
                         Grid.ColumnSpan="2"
-                        Margin="20, 0, 20, 0"
+                        Margin="20, 0, 20, 10"
                         ItemsSource="{Binding AllSheets}"
                         SelectionMode="Single"
                         SelectedItem="{Binding SelectedSheet}"
                         SelectionChangedCommand="{Binding SelectedSheetChangedCommand}">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical"
-                                 Span="4"
-                                 VerticalItemSpacing="10"
-                                 HorizontalItemSpacing="10"
-                                 />
-            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <pancakeview:PancakeView Style="{StaticResource SmallSheet_Pancakeview}" WidthRequest="60" HeightRequest="60">
+                        <StackLayout>
+                            <Label Text="{Binding Stringed}" Style="{StaticResource SmallSheet_Label}" />
+                            <BoxView Style="{StaticResource Line_Separator}"/>
+                        </StackLayout>
                         <!--<pancakeview:PancakeView.Shadow>
                             <pancakeview:DropShadow Color="{StaticResource SheetColor}"/>
                         </pancakeview:PancakeView.Shadow>-->
-                        <Label Text="{Binding Stringed}" />
                         
                         <!--<CollectionView Grid.Row="5"
                                         ItemsSource="{Binding SheetTasks}"

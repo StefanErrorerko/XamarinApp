@@ -65,6 +65,7 @@
                 Text="{Binding SheetText}" 
                 Style="{StaticResource Editor}"/>-->
             <StackLayout>
+                <!--<custom:BorderlessEntry Text="{Binding }" />-->
                 <CollectionView Grid.Row="1"
                         Grid.ColumnSpan="5"
                         Margin="10"
@@ -76,7 +77,7 @@
                             <pancakeview:PancakeView x:Name="TodoPancakeView" Style="{StaticResource Todo_Pancakeview}">
                                 <StackLayout>
                                     <StackLayout IsVisible="{Binding isTodo}" Orientation="Horizontal">
-                                        <CheckBox Style="{StaticResource Todo_Checkbox}"/>
+                                        <CheckBox IsChecked="{Binding IsChecked}" Style="{StaticResource Todo_Checkbox}"/>
                                         <custom:BorderlessEntry Text="{Binding Content}" 
                                                                 Style="{StaticResource Todo_Entry}" 
                                                                 WidthRequest="{Binding Source={x:Reference Name=TodoPancakeView}, Path=Width}"/>
@@ -85,7 +86,7 @@
                                         <pancakeview:PancakeView Style="{StaticResource Appointment_Pancakeview}">
                                             <StackLayout >
                                                 <Label Text="{Binding Title}" Margin="20, 10, 0, 0" FontAttributes="Bold"/>
-                                                <Label Text="{Binding Description}" Margin="40, 0, 0, 0"/>
+                                                <Label Text="{Binding Content}" Margin="40, 0, 0, 0"/>
                                                 <Label HorizontalOptions="End" Margin="0, 0, 20, 10">
                                                     <Label.Text>
                                                         <MultiBinding StringFormat="{}{0} - {1}">

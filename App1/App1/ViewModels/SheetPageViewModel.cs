@@ -108,7 +108,7 @@ namespace App1.ViewModels
                     }
                     else
                     {
-                        sb.AppendLine("❎");
+                        sb.AppendLine("▢");
                     }
                     sb.Append(item.Content);
                 }
